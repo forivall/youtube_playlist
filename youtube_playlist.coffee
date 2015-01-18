@@ -70,7 +70,7 @@ add_player = ($) ->
     return unless $(this).attr('href').match url
 
     id = this.href.
-      replace(/^.*/embed/, '').
+      replace(/^.*\/embed\//, '').
       replace(/\&.*$/, '')
 
     # Don't allow duplicates
