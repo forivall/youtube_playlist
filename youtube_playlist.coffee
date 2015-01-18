@@ -50,6 +50,8 @@ add_player = ($) ->
 
   # Video list
   ids = []
+  
+  ###
   url = new RegExp 'https?://(www.)?youtube.com/'
 
   $('a[href^="http"]').each ->
@@ -57,6 +59,18 @@ add_player = ($) ->
 
     id = this.href.
       replace(/^.*v=/, '').
+      replace(/\&.*$/, '')
+
+    # Don't allow duplicates
+    ids.push id unless id in ids
+  ###
+  url = new RegExp '//(www.)?youtube.com/'
+
+  $('iframe').each ->
+    return unless $(this).attr('href').match url
+
+    id = this.href.
+      replace(/^.*/embed/, '').
       replace(/\&.*$/, '')
 
     # Don't allow duplicates
