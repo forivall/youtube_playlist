@@ -67,7 +67,7 @@ add_player = ($) ->
   url = new RegExp '//(www.)?youtube.com/'
 
   $('iframe').each ->
-    return unless $(this).attr('href').match url
+    return unless $(this).attr('src').match url
 
     id = this.href.
       replace(/^.*\/embed\//, '').
